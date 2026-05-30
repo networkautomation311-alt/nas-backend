@@ -38,6 +38,10 @@ const instrumentMasterRoutes = require('./instrument-master-routes'); // Added i
 const dailyCallsSheetRoutes = require('./daily-calls-sheet-routes'); // Added daily-calls-sheet route
 const technicianMasterRoutes = require('./technician-master-routes'); // Added technician-master route
 const callsAssigningRoutes = require('./calls-assigning-routes'); // Added calls-assigning route
+const planToActionRoutes = require('./plan-to-action-routes'); // Added plan-to-action route
+const dailyActivityReportRoutes = require('./daily-activity-report-routes'); // Added daily-activity-report route
+const customerCallingRoutes = require('./customer-calling-routes'); // Added customer-calling route
+const feedbackFormRoutes = require('./feedback-form-routes'); // Added feedback-form route
 
 // Register routes
 router.use('/auth', authRoutes);
@@ -77,5 +81,9 @@ router.use('/instrument-master', instrumentMasterRoutes); // Register instrument
 router.use('/daily-calls-sheet', dailyCallsSheetRoutes); // Register daily-calls-sheet route
 router.use('/technician-master', technicianMasterRoutes); // Register technician-master route
 router.use('/calls-assigning', callsAssigningRoutes); // Register calls-assigning route
+router.use('/plan-to-action', planToActionRoutes); // Register plan-to-action route
+router.use('/daily-activity-report', dailyActivityReportRoutes); // Register daily-activity-report route
+router.use('/customer-calling', customerCallingRoutes); // Register customer-calling route
+router.use('/feedback-form', feedbackFormRoutes); // Register feedback-form route
 
 module.exports = router;

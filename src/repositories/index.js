@@ -36,4 +36,8 @@ module.exports = {
     DailyCallsSheetRepository: require('./daily-calls-sheet-repository'), // added daily-calls-sheet repository
     TechnicianMasterRepository: require('./technician-master-repository'), // added technician-master repository
     CallsAssigningRepository: require('./calls-assigning-repository'), // added calls-assigning repository
+    PlanToActionRepository: require('./plan-to-action-repository'), // added plan-to-action repository
+    DailyActivityReportRepository: require('./daily-activity-report-repository'), // added daily-activity-report repository
+    CustomerCallingRepository: require('./customer-calling-repository'), // added customer-calling repository
+    FeedbackFormRepository: require('./feedback-form-repository'), // added feedback-form repository
 };

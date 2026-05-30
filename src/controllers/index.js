@@ -34,4 +34,8 @@ module.exports = {
     DailyCallsSheetController: require('./daily-calls-sheet-controller'), // Added daily-calls-sheet controller
     TechnicianMasterController: require('./technician-master-controller'), // Added technician-master controller
     CallsAssigningController: require('./calls-assigning-controller'), // Added calls-assigning controller
+    PlanToActionController: require('./plan-to-action-controller'), // Added plan-to-action controller
+    DailyActivityReportController: require('./daily-activity-report-controller'), // Added daily-activity-report controller
+    CustomerCallingController: require('./customer-calling-controller'), // Added customer-calling controller
+    FeedbackFormController: require('./feedback-form-controller'), // Added feedback-form controller
 };

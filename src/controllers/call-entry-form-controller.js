@@ -39,11 +39,28 @@ const createCallEntryController = async (req, res) => {
       };
     }
 
-    // Merge body and attachment
-    const callEntryData = {
-      ...req.body,
-      ...attachmentData,
-    };
+    // Clean invalid ObjectId fields before saving
+      const optionalObjectIdFields = [
+        "endUser", "department", "natureOfCall", "instrument",
+        "problemDetails", "callUrgency", "callLoggedBy", "callNotedBy",
+        "engineerAssigned"
+      ];
+
+      const cleanedBody = { ...req.body };
+      optionalObjectIdFields.forEach((field) => {
+        if (
+          cleanedBody[field] === "" ||
+          cleanedBody[field] === "null" ||
+          (cleanedBody[field] && !mongoose.Types.ObjectId.isValid(cleanedBody[field]))
+        ) {
+          delete cleanedBody[field]; // invalid value hata do
+        }
+      });
+
+      const callEntryData = {
+        ...cleanedBody,
+        ...attachmentData,
+      };
 
     // Create the call entry
     const data = await CallEntry.create(callEntryData);
@@ -59,7 +76,9 @@ const createCallEntryController = async (req, res) => {
       .populate("instrument")
       .populate("problemDetails")
       .populate("callUrgency")
-      .populate("engineerAssigned");
+      .populate("engineerAssigned")
+      .populate("callLoggedBy")
+      .populate("callNotedBy");
 
     return res.status(201).json({
       success: true,
@@ -94,6 +113,8 @@ const getAllCallEntriesController = async (req, res) => {
       .populate("problemDetails")
       .populate("callUrgency")
       .populate("engineerAssigned")
+      .populate("callLoggedBy")
+      .populate("callNotedBy")
       .sort({ createdAt: -1 });
 
     return res.status(200).json({
@@ -131,7 +152,9 @@ const getCallEntryByIdController = async (req, res) => {
       .populate("instrument")
       .populate("problemDetails")
       .populate("callUrgency")
-      .populate("engineerAssigned");
+      .populate("engineerAssigned")
+      .populate("callLoggedBy")
+      .populate("callNotedBy");
 
     if (!data) {
       return res.status(404).json({
@@ -203,7 +226,9 @@ const updateCallEntryController = async (req, res) => {
       .populate("instrument")
       .populate("problemDetails")
       .populate("callUrgency")
-      .populate("engineerAssigned");
+      .populate("engineerAssigned")
+      .populate("callLoggedBy")
+      .populate("callNotedBy");
 
     if (!updatedData) {
       return res.status(404).json({
@@ -310,7 +335,9 @@ const assignCall = async (req, res) => {
       .populate("instrument")
       .populate("problemDetails")
       .populate("callUrgency")
-      .populate("engineerAssigned");
+      .populate("engineerAssigned")
+      .populate("callLoggedBy")
+      .populate("callNotedBy");
 
     if (!data) {
       return res.status(404).json({

@@ -34,6 +34,10 @@ const InstrumentMaster = require('./instrument-master-model'); // Added instrume
 const DailyCallSheet = require('./daily-call-sheet-model'); // Added daily-call-sheet model
 const TechnicianMaster = require('./technician-master-model'); // Added technician-master model
 const CallsAssigning = require('./calls-assigning-model'); // Added calls-assigning model
+const PlanToAction = require('./plan-to-action-model'); // Added plan-to-action model
+const DailyActivityReport = require('./daily-activity-report-model'); // Added daily-activity-report model
+const CustomerCalling = require('./customer-calling-model'); // Added customer-calling model
+const FeedbackForm = require('./feedback-form-model'); // Added feedback-form model
 
 module.exports = {
   Blog,
@@ -72,4 +76,8 @@ module.exports = {
   DailyCallSheet, // Exported daily-call-sheet model
   TechnicianMaster, // Exported technician-master model
   CallsAssigning, // Exported calls-assigning model
+  PlanToAction, // Exported plan-to-action model
+  DailyActivityReport, // Exported daily-activity-report model
+  CustomerCalling, // Exported customer-calling model
+  FeedbackForm, // Exported feedback-form model
 };

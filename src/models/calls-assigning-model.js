@@ -77,6 +77,14 @@ const callsAssigningSchema =
       },
 
       // =====================================
+      // ATTEMPT NO
+      // =====================================
+      // attemptNo auto-generate karega, same (callNo, isActive) combination ke records count karke + 1 karega.
+      attemptNo: {
+        type: Number,
+      },
+
+      // =====================================
       // DATE & TIME
       // =====================================
 
@@ -163,6 +171,28 @@ const callsAssigningSchema =
       timestamps: true,
     }
   );
+
+// attemptNo auto-generate karega: same callNo aur isActive:true ke records count karke +1 set karega
+callsAssigningSchema.pre("save", async function (next) {
+  if (this.isNew) {
+    // Agar attemptNo pehle se diya gaya hai to skip karein (edge case)
+    if (typeof this.attemptNo === "number" && this.attemptNo > 0) return next();
+
+    try {
+      const CallsAssigning = mongoose.model("CallsAssigning");
+      const count = await CallsAssigning.countDocuments({
+        callNo: this.callNo,
+        isActive: true,
+      });
+      this.attemptNo = count + 1;
+      return next();
+    } catch (err) {
+      return next(err);
+    }
+  } else {
+    return next();
+  }
+});
 
 module.exports = mongoose.model(
   "CallsAssigning",

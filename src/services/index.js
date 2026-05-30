@@ -36,4 +36,8 @@ module.exports = {
     DailyCallsSheetService: require('./daily-calls-sheet-service'), // added daily-calls-sheet service
     TechnicianMasterService: require('./technician-master-service'), // added technician-master service
     CallsAssigningService: require('./calls-assigning-service'), // added calls-assigning service
+    PlanToActionService: require('./plan-to-action-service'), // added plan-to-action service
+    DailyActivityReportService: require('./daily-activity-report-service'), // added daily-activity-report service
+    CustomerCallingService: require('./customer-calling-service'), // added customer-calling service
+    FeedbackFormService: require('./feedback-form-service'), // added feedback-form service
 };
