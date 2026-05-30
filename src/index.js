@@ -22,7 +22,7 @@ const app = express();
 
 // CORS middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://networkautomation-in-234510.hostingersite.com/','https://networkautomation-co-in-675892.hostingersite.com/'],
+  origin: ['http://localhost:5173', 'https://networkautomation-in-234510.hostingersite.com','https://networkautomation-co-in-675892.hostingersite.com'],
   credentials: true,
 }));
 
